@@ -79,21 +79,15 @@ class Zadaca {
     private boolean status;
 
     public Zadaca() {
-        this.numHours = 0;
-        this.status = false;
-        this.description = "";
     }
 
     public Zadaca(String description) {
         this.description = description;
-        this.numHours = 0;
-        this.status = false;
     }
 
     public Zadaca(String description, int numHours) {
         this.description = description;
         this.numHours = numHours;
-        this.status = false;
     }
 
     public Zadaca(String description, int numHours, boolean status) {
@@ -143,13 +137,7 @@ class Vraboten {
     private int numTasks;
 
     public Vraboten() {
-        this.name = "";
-        this.surname = "";
-        this.salary = 0.0;
-        this.workingExperience = 0;
-        this.numPoints = 0;
         this.tasks = new Zadaca[10];
-        this.numTasks = 0;
     }
 
     public Vraboten(String name, String surname, int workingExperience, int numPoints) {
@@ -159,7 +147,6 @@ class Vraboten {
         this.numPoints = numPoints;
         this.salary = numPoints * POINT;
         this.tasks = new Zadaca[10];
-        this.numTasks = 0;
     }
 
     public void dodadiZadaca(Zadaca z) {
