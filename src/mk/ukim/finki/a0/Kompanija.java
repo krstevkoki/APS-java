@@ -40,7 +40,7 @@ public class Kompanija {
 
     public void pecati() {
         for (Vraboten employee : employees) {
-            employee.toString();
+            System.out.println(employee.toString());
         }
     }
 
