@@ -14,13 +14,13 @@ public class Zadaca3 {
     }
 
     public static void main(String[] args) {
-        int sum = 0, counter = 0;
+        int sum = 0, counter = 0, limit = 100;
         for (int i = 1; ; ++i) {
             if (isPrime(i)) {
                 ++counter;
                 sum += i;
             }
-            if (counter == 100)
+            if (counter == limit)
                 break;
         }
         System.out.println("Zbirot na prvite 100 prosti broja e: " + sum);
