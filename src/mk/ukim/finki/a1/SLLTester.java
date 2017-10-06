@@ -17,13 +17,15 @@ public class SLLTester {
         System.out.println(niza.toString());
         System.out.println("The size of the Array is: " + niza.size());
 
-
         niza.insertBefore(new Integer(24), niza.getFirst());
         System.out.println(niza.toString());
         System.out.println("The size of the Array is: " + niza.size());
 
-
         niza.insertBefore(new Integer(18), niza.find(new Integer(34)));
+        System.out.println(niza.toString());
+        System.out.println("The size of the Array is: " + niza.size());
+
+        niza.insertAfter(new Integer(75), niza.find(new Integer(10)));
         System.out.println(niza.toString());
         System.out.println("The size of the Array is: " + niza.size());
 
@@ -35,7 +37,11 @@ public class SLLTester {
         System.out.println(niza.toString());
         System.out.println("The size of the Array is: " + niza.size());
 
-        niza.delete(niza.find(new Integer(10)));
+        niza.delete(niza.find(new Integer(18)));
+        System.out.println(niza.toString());
+        System.out.println("The size of the Array is: " + niza.size());
+
+        niza.delete(new SLLNode<>(0, null));
         System.out.println(niza.toString());
         System.out.println("The size of the Array is: " + niza.size());
 
