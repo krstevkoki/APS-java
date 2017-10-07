@@ -36,14 +36,14 @@ public class Array<E> {
     }
 
     public void insert(final int position, final E object) {
-        if (position >= 0 && position < size) {
+        if (position >= 0 && position <= size) {
             E[] temp = (E[]) new Object[size + 1];  // make a new Array with (size + 1) length
             for (int i = 0; i < size; ++i) {
                 temp[i] = data[i];  // copy the elements in the new Array
             }
             if (size > position) {
                 for (int i = position; i < size; ++i) {
-                    temp[i + 1] = data[i];  // make space for the new element (shift right all elements after index: positin)
+                    temp[i + 1] = data[i];  // make space for the new element (shift right all elements after index: position)
                 }
             }
             temp[position] = object;  // finally add the new element (object) in the Array
