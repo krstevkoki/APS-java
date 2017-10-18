@@ -48,7 +48,8 @@ class SLL<E extends Comparable<E>> {
         Iterator<E> it = iterator();
         while (it.hasNext()) {
             sb.append(it.next());
-            sb.append(" ");
+            if (it.hasNext())
+                sb.append(" ");
         }
         return sb.toString();
     }
