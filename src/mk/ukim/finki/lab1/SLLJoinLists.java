@@ -29,12 +29,6 @@ public class SLLJoinLists {
 
         SLL<Integer> spoeni = lista1.joinLists(lista2);
         spoeni.deleteDuplicates();
-        Iterator<Integer> it = spoeni.iterator();
-        while (it.hasNext()) {
-            System.out.print(it.next());
-            if (it.hasNext())
-                System.out.print(" ");
-        }
-        System.out.println();
+        System.out.println(spoeni.toString());
     }
 }
