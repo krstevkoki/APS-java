@@ -59,13 +59,6 @@ public class SpecialSLLJoin {
             lista2.insertLast(Integer.parseInt(pomniza[i]));
 
         SLL<Integer> spoeni = specialJoin(lista1, lista2);
-
-        Iterator<Integer> it = spoeni.iterator();
-        while (it.hasNext()) {
-            System.out.print(it.next().toString());
-            if (it.hasNext())
-                System.out.print(" ");
-        }
-        System.out.println();
+        System.out.println(spoeni.toString());
     }
 }
