@@ -94,17 +94,21 @@ public class Array<E> {
         return sb.toString();
     }
 
-    public static int brojDoProsek(Array<Integer> niza) {
-        double average = 0;
+    public static double calcAverage(Array<Integer> niza) {
+        int average = 0;
         for (int i = 0; i < niza.length(); ++i)
             average += niza.get(i);
-        average /= niza.length();
+        return average /= (double) niza.length();
+    }
+
+    public static int brojDoProsek(Array<Integer> niza) {
+        // Vashiot kod tuka...
+        double average = calcAverage(niza);
         double currentMinDistance = Math.abs(niza.get(0) - average);
-        double lastMinDistance = currentMinDistance;
         int minIndex = 0;
         for (int i = 1; i < niza.length(); ++i) {
             if (currentMinDistance >= Math.abs(niza.get(i) - average)) {
-                lastMinDistance = currentMinDistance;
+                double lastMinDistance = currentMinDistance;
                 currentMinDistance = Math.abs(niza.get(i) - average);
                 if (lastMinDistance == currentMinDistance) {
                     if (niza.get(minIndex) > niza.get(i))
@@ -113,7 +117,6 @@ public class Array<E> {
                     minIndex = i;
             }
         }
-        // Vashiot kod tuka...
         return niza.get(minIndex);
     }
 
