@@ -22,6 +22,25 @@ class SLLNode<E> {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        SLLNode<?> sllNode = (SLLNode<?>) o;
+        if (element != null ? !element.equals(sllNode.element) : sllNode.element != null)
+            return false;
+        return successor != null ? successor.equals(sllNode.successor) : sllNode.successor == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = element != null ? element.hashCode() : 0;
+        result = 31 * result + (successor != null ? successor.hashCode() : 0);
+        return result;
+    }
+
+    @Override
     public String toString() {
         return element.toString();
     }
