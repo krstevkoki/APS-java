@@ -15,13 +15,13 @@ public class GreedyExamples {
 
     public int greedyCoins(int coins[], int sum, int coinsNum[]) {
         sortCoins(coins);
-        int minCoinsCouter = 0;
+        int minCoinsCounter = 0;
         for (int i = 0; sum > 0; ++i) {
             coinsNum[i] = sum / coins[i];
             sum -= coins[i] * coinsNum[i];
-            minCoinsCouter += coinsNum[i];
+            minCoinsCounter += coinsNum[i];
         }
-        return minCoinsCouter;
+        return minCoinsCounter;
     }
 
     public void sortirajPoSoodnos(int p[], int t[]) {  // p[] = profit; t[] = tezini
