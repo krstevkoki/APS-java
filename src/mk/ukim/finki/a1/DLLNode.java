@@ -11,6 +11,14 @@ public class DLLNode<E> {
         this.predecessor = predecessor;
     }
 
+    public DLLNode<E> getSuccesor() {
+        return succesor;
+    }
+
+    public DLLNode<E> getPredecessor() {
+        return predecessor;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o)
@@ -18,19 +26,12 @@ public class DLLNode<E> {
         if (o == null || getClass() != o.getClass())
             return false;
         DLLNode<?> dllNode = (DLLNode<?>) o;
-        if (element != null ? !element.equals(dllNode.element) : dllNode.element != null)
-            return false;
-        if (predecessor != null ? !predecessor.equals(dllNode.predecessor) : dllNode.predecessor != null)
-            return false;
-        return succesor != null ? succesor.equals(dllNode.succesor) : dllNode.succesor == null;
+        return element != null ? element.equals(dllNode.element) : dllNode.element == null;
     }
 
     @Override
     public int hashCode() {
-        int result = element != null ? element.hashCode() : 0;
-        result = 31 * result + (predecessor != null ? predecessor.hashCode() : 0);
-        result = 31 * result + (succesor != null ? succesor.hashCode() : 0);
-        return result;
+        return element != null ? element.hashCode() : 0;
     }
 
     @Override
