@@ -21,12 +21,12 @@ class DLLNode<E extends Comparable<E>> {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         DLLNode<?> dllNode = (DLLNode<?>) o;
-        return element != null ? element.equals(dllNode.element) : dllNode.element == null;
+        if (element != null ? !element.equals(dllNode.element) : dllNode.element != null) return false;
+        if (successor != null ? !successor.equals(dllNode.successor) : dllNode.successor != null) return false;
+        return predecessor != null ? predecessor.equals(dllNode.predecessor) : dllNode.predecessor == null;
     }
 
     @Override
