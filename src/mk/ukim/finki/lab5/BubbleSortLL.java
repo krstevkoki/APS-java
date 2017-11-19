@@ -11,9 +11,11 @@ public class BubbleSortLL {
             DLLNode<Integer> temp = list.getFirst();
             while (temp.successor != null) {
                 if (temp.element.compareTo(temp.successor.element) > 0) {
-                    Integer tmp = temp.element;
+                    list.insertAfter(temp.element, temp.successor);
+                    list.delete(temp);
+                    /*Integer tmp = temp.element;
                     temp.element = temp.successor.element;
-                    temp.successor.element = tmp;
+                    temp.successor.element = tmp;*/
                 }
                 temp = temp.successor;
             }
