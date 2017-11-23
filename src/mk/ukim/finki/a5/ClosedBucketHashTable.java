@@ -60,6 +60,7 @@ public class ClosedBucketHashTable<K extends Comparable<K>, V> {
         return sb.toString();
     }
 
+    /* ============ Private Inner Classes  ============ */
     private class MapEntry<K extends Comparable<K>, V> implements Comparable<MapEntry<K, V>> {
         private K key;
         private V value;
