@@ -32,13 +32,16 @@ public class ClosedBucketHashTable<K extends Comparable<K>, V> {
 
     public void delete(K key) {
         int hashCode = hash(key);
-        SLLNode<MapEntry<K, V>> target = search(key);
-        SLLNode<MapEntry<K, V>> current = buckets[hashCode];
-        while (!(current.next.equals(target)) && current.next != null)
-            current = current.next;
-        if (current.next.equals(target))
-            current.next = target.next;
-        else throw new NoSuchElementException(key.toString());
+        for (SLLNode<MapEntry<K, V>> predecessor = null, current = buckets[hashCode]; current != null;
+             predecessor = current, current = current.next) {
+            if (key.equals(current.element.key)) {
+                if (predecessor == null)
+                    buckets[hashCode] = current.next;
+                else
+                    predecessor.next = current.next;
+                return;
+            }
+        }
     }
 
     private int hash(K key) {
@@ -57,17 +60,17 @@ public class ClosedBucketHashTable<K extends Comparable<K>, V> {
         return sb.toString();
     }
 
-    private class MapEntry<T extends Comparable<T>, E> implements Comparable<MapEntry<T, E>> {
-        private T key;
-        private E value;
+    private class MapEntry<K extends Comparable<K>, V> implements Comparable<MapEntry<K, V>> {
+        private K key;
+        private V value;
 
-        public MapEntry(T key, E value) {
+        public MapEntry(K key, V value) {
             this.key = key;
             this.value = value;
         }
 
         @Override
-        public int compareTo(MapEntry<T, E> o) {
+        public int compareTo(MapEntry<K, V> o) {
             return this.key.compareTo(o.key);
         }
 
