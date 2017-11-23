@@ -12,6 +12,8 @@ public class ClosedBucketsHashTableTest {
         table1.insert(new ChemicalElement("I"), 53);
         table1.insert(new ChemicalElement("Xe"), 54);
         System.out.println(table1);
+        table1.delete(new ChemicalElement("F"));
+        System.out.println(table1);
 
         ClosedBucketHashTable<ChemicalElement, Integer> table2 = new ClosedBucketHashTable<>(26);
         table2.insert(new ChemicalElement("H"), 1);
@@ -26,6 +28,8 @@ public class ClosedBucketsHashTableTest {
         table2.insert(new ChemicalElement("Sr"), 38);
         table2.insert(new ChemicalElement("Cs"), 55);
         table2.insert(new ChemicalElement("Ba"), 56);
+        System.out.println(table2);
+        table2.delete(new ChemicalElement("H"));
         System.out.println(table2);
         System.out.println(table2.search(new ChemicalElement("Ca")));
         /*System.out.println(table2.search(new ChemicalElement("Au")));  // throws exception*/
