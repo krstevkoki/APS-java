@@ -2,7 +2,7 @@ package mk.ukim.finki.a6;
 
 import java.util.Iterator;
 
-interface Tree<T> {
+public interface Tree<T> {
     Tree.Node<T> root();
 
     Tree.Node<T> parent(Tree.Node<T> node);

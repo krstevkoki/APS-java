@@ -2,7 +2,7 @@ package mk.ukim.finki.a6;
 
 import java.util.Iterator;
 
-class SLLTree<T> implements Tree<T> {
+public class SLLTree<T> implements Tree<T> {
     private SLLNode<T> root;
 
     public SLLTree() {
