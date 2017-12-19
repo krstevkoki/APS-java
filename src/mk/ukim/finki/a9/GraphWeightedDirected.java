@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-class GraphWeightedDirected<T> {
+public class GraphWeightedDirected<T> {
     private int numNodes;
     private GraphNode<T> adjList[];
 
@@ -39,6 +39,17 @@ class GraphWeightedDirected<T> {
 
     public void deleteEdge(int x, int y) {
         adjList[x].removeNeighbor(adjList[y]);
+    }
+
+    public void setInfo(int x, T info) {
+        adjList[x].info = info;
+    }
+
+    public int getIndex(T info) {
+        for (GraphNode<T> tGraphNode : adjList)
+            if (tGraphNode.info.equals(info))
+                return tGraphNode.index;
+        return -1;
     }
 
     /* ************************** KRUSKAL ********************************************************************** */
