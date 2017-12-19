@@ -1,9 +1,6 @@
 package mk.ukim.finki.a9;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class GraphWeightedDirected<T> {
     private int numNodes;
@@ -50,6 +47,10 @@ public class GraphWeightedDirected<T> {
             if (tGraphNode.info.equals(info))
                 return tGraphNode.index;
         return -1;
+    }
+
+    public int getNumNodes() {
+        return numNodes;
     }
 
     /* ************************** KRUSKAL ********************************************************************** */
@@ -251,6 +252,87 @@ public class GraphWeightedDirected<T> {
         }
 
         return distance;
+    }
+
+    public float[] dijkstra(int from, int[] pateka) {
+        /* Minimalna cena do sekoj od teminjata */
+        float distance[] = new float[this.numNodes];
+        /* dali za temeto e najdena konecnata (minimalna) cena */
+        boolean finalno[] = new boolean[this.numNodes];
+        for (int i = 0; i < this.numNodes; i++) {
+            distance[i] = -1;
+            finalno[i] = false;
+        }
+
+        finalno[from] = true;
+        distance[from] = 0;
+        /*
+         * vo sekoj cekor za edno teme se dobiva konecna minimalna cena
+         */
+        for (int i = 1; i < this.numNodes; ++i) {
+            /* za site sledbenici na from presmetaj ja cenata */
+            for (GraphNodeNeighbor<T> pom : adjList[from].neighbors) {
+                /* ako grankata kon sosedot nema konecna cena */
+                if (!finalno[pom.node.index]) {
+                    /* ako ne e presmetana cena za temeto */
+                    if (distance[pom.node.index] <= 0) {
+                        distance[pom.node.index] = distance[from] + pom.weight;
+                        pateka[pom.node.index] = from;
+                    }
+                    /* inaku, ako e pronajdena poniska */
+                    else if (distance[from] + pom.weight < distance[pom.node.index]) {
+                        distance[pom.node.index] = distance[from] + pom.weight;
+                        pateka[pom.node.index] = from;
+                    }
+                }
+            }
+            /* najdi teme so min. cena koja ne e konecna */
+            boolean minit = false; /* min. ne e inicijaliziran */
+            int k = -1;
+            float minc = -1;
+            /* proveri gi site teminja */
+            for (int j = 0; j < this.numNodes; ++j) {
+                if (!finalno[j] && distance[j] != -1) { /*ako cenata ne e  konecna*/
+                    if (!minit) { /* ako ne e inicijaliziran minimumot */
+                        minc = distance[k = j]; /* proglasi go ova e minimum */
+                        minit = true; /* oznaci deka min e inicijaliziran */
+                    }
+                    /* proveri dali e pronajdeno teme so pomala cena */
+                    else if (minc > distance[j] && distance[j] > 0)
+                        minc = distance[k = j];
+                }
+            }
+            finalno[from = k] = true;
+        }
+
+        return distance;
+    }
+
+    public float minPateka(int from, int to, int[] pateka) {
+        Stack<T> stack = new Stack<>();
+        float[] distance = dijkstra(from, pateka);
+        int current = to;
+        while (current != from) {
+            stack.push(adjList[current].info);
+            current = pateka[current];
+        }
+        stack.push(adjList[current].info);
+        while (!stack.isEmpty())
+            System.out.print(stack.pop() + " ");
+        System.out.println();
+        float totalDistance = distance[to];
+
+        distance = dijkstra(to, pateka);
+        current = from;
+        while (current != to) {
+            stack.push(adjList[current].info);
+            current = pateka[current];
+        }
+        stack.push(adjList[current].info);
+        while (!stack.isEmpty())
+            System.out.print(stack.pop() + " ");
+        System.out.println();
+        return totalDistance + distance[from];
     }
     /* ***************************************************************************************************** */
 
