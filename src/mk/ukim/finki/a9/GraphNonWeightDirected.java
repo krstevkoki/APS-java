@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Stack;
 
-class GraphNonWeightDirected<T> {
+public class GraphNonWeightDirected<T> {
     private int numNodes;
     private GraphNode<T> adjList[];
 
