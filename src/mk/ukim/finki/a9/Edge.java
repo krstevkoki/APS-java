@@ -1,6 +1,6 @@
 package mk.ukim.finki.a9;
 
-class Edge implements Comparable<Edge> {
+public class Edge implements Comparable<Edge> {
     private int fromVertex, toVertex;
     private float weight;
 
@@ -25,5 +25,10 @@ class Edge implements Comparable<Edge> {
     @Override
     public int compareTo(Edge o) {
         return Float.compare(this.weight, o.weight);
+    }
+
+    @Override
+    public String toString() {
+        return fromVertex + "-->" + toVertex + " " + weight;
     }
 }
